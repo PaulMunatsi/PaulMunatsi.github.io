@@ -3,71 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Linux Mastery: Zero to Hero - A comprehensive, hands-on Linux training course taking you from complete beginner to confident system administrator in 34 days. Learn command line, bash scripting, networking, and system administration.">
-    <meta name="keywords" content="Linux, Tutorial, System Administration, Command Line, Bash, Ubuntu, Open Source, DevOps, Terminal">
-    <meta name="author" content="Linux Mastery Course">
-    <meta name="theme-color" content="#00ff41">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Linux Mastery: Zero to Hero - Complete Linux Training">
-    <meta property="og:description" content="Master Linux in 34 days with hands-on exercises, interactive quizzes, and real-world projects. From beginner to system administrator.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourusername.github.io/linux-mastery/">
-    <meta property="og:image" content="https://yourusername.github.io/linux-mastery/images/og-image.png">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Linux Mastery: Zero to Hero">
-    <meta name="twitter:description" content="Complete Linux training from beginner to system administrator in 34 days.">
-    <meta name="twitter:image" content="https://yourusername.github.io/linux-mastery/images/twitter-card.png">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://yourusername.github.io/linux-mastery/">
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Course",
-      "name": "Linux Mastery: Zero to Hero",
-      "description": "A comprehensive, hands-on Linux training course from beginner to system administrator",
-      "provider": {
-        "@type": "Organization",
-        "name": "Linux Mastery",
-        "url": "https://yourusername.github.io/linux-mastery/"
-      },
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "online",
-        "duration": "P34D",
-        "inLanguage": "en"
-      },
-      "educationalLevel": "Beginner to Advanced",
-      "coursePrerequisites": "None - starts from absolute beginner level",
-      "teaches": ["Linux Command Line", "Bash Scripting", "System Administration", "Networking", "Package Management"],
-      "numberOfLessons": 6,
-      "timeRequired": "P34D"
-    }
-    </script>
-    
-    <title>Linux Mastery: Zero to Hero - Complete Linux Training Course</title>
-    
+    <meta name="description" content="Linux Mastery Module 4 - User & Process Management: Comprehensive hands-on training for mastering Linux">
+    <meta name="keywords" content="Linux, Tutorial, System Administration, Module 4, User & Process Management, Command Line">
+    <meta property="og:title" content="Module 4: User & Process Management - Linux Mastery">
+    <meta property="og:description" content="Master User & Process Management with hands-on exercises and real-world examples">
+    <link rel="canonical" href="https://yourusername.github.io/linux-mastery/module4.html">
+    <title>Module 4: User & Process Management - Linux Mastery Course</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <link rel="alternate icon" type="image/x-icon" href="images/favicon.ico">
-    
-    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
 </head>
-<body>
-    <!-- Skip to main content link for accessibility -->
+<body data-module="4">
     <a href="#mainContent" class="skip-link">Skip to main content</a>
-
-    <!-- Particle background canvas -->
     <canvas id="particles" class="particles-bg" aria-hidden="true"></canvas>
-
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle between light and dark theme" title="Toggle theme (Ctrl+T)">
+    
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+T)">
         <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -83,15 +33,13 @@
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
     </button>
-
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top of page" title="Back to top">
+    
+    <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
     </button>
-
-    <!-- Navigation Sidebar -->
+    
     <nav class="sidebar" id="sidebar" role="navigation" aria-label="Course navigation">
         <div class="sidebar-header">
             <div class="logo">
@@ -102,7 +50,7 @@
                 </svg>
                 <h1 class="logo-text">Linux Mastery</h1>
             </div>
-            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar navigation" aria-expanded="true">
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle navigation" aria-expanded="true">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <line x1="3" y1="12" x2="21" y2="12"></line>
                     <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -110,22 +58,20 @@
                 </svg>
             </button>
         </div>
-
-        <!-- Progress Overview -->
+        
         <div class="progress-overview" role="region" aria-label="Course progress">
             <div class="progress-text">
                 <span id="progress-label">Course Progress</span>
                 <span class="progress-percentage" id="overallProgress" aria-labelledby="progress-label">0%</span>
             </div>
-            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Overall course completion">
+            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                 <div class="progress-fill" id="overallProgressBar"></div>
             </div>
         </div>
-
-        <!-- Module Navigation -->
+        
         <ul class="module-list" id="moduleList">
-            <li class="module-item active">
-                <a href="index.html" class="module-link" data-module="home" aria-current="page">
+            <li class="module-item">
+                <a href="index.html" class="module-link" data-module="home">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                         <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -201,46 +147,58 @@
             </li>
         </ul>
     </nav>
-
-    <!-- Main Content -->
+    
     <main class="main-content" id="mainContent" role="main">
         <header class="content-header">
-            <!-- Terminal-style breadcrumb -->
             <div class="terminal-breadcrumb" role="navigation" aria-label="Breadcrumb">
                 <span class="prompt" aria-hidden="true">student@linux-mastery:~$</span>
-                <span class="path">cd home</span>
+                <span class="path">cd modules/module-04</span>
                 <span class="cursor" aria-hidden="true">█</span>
             </div>
-
+            
             <div class="search-bar" role="search">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                <input 
-                    type="search" 
-                    id="searchInput" 
-                    placeholder="Search course content... (Ctrl+K)"
-                    aria-label="Search course content"
-                    aria-describedby="search-instructions"
-                >
-                <span id="search-instructions" class="sr-only">Type to search through course modules and content. Use arrow keys to navigate results.</span>
-                <div class="search-results" id="searchResults" role="region" aria-live="polite" aria-label="Search results"></div>
+                <input type="search" id="searchInput" placeholder="Search course content... (Ctrl+K)" aria-label="Search course content">
+                <div class="search-results" id="searchResults" role="region" aria-live="polite"></div>
             </div>
         </header>
-
+        
         <article class="content-body" id="contentBody">
             <div class="loading-spinner" id="loadingSpinner">
                 <div class="spinner"></div>
-                <p>Loading course content...</p>
+                <p>Loading module content...</p>
             </div>
         </article>
+        
+        <div class="module-actions" id="moduleActions" style="display: none;">
+            <button class="btn btn-complete" id="markComplete">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Mark as Complete</span>
+            </button>
+            <div class="navigation-buttons">
+                <a href="#" class="btn btn-secondary" id="prevModule" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    Previous Module
+                </a>
+                <a href="#" class="btn btn-primary" id="nextModule" style="display: none;">
+                    Next Module
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
     </main>
-
-    <!-- Screen reader announcements -->
+    
     <div role="status" aria-live="polite" aria-atomic="true" class="sr-only" id="announcer"></div>
-
-    <!-- External Libraries -->
+    
     <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js" defer></script>
@@ -248,7 +206,6 @@
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
-    
     <script src="js/script.js" defer></script>
 </body>
 </html>
