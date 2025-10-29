@@ -193,7 +193,7 @@ The journey of 1,000 commands begins with a single keystroke.
 3. **Start** with **Module 01, Day 1**
 4. **Practice** every single day
 
-[📥 Download Module 01](./Module01_LinuxFundamentals.md) | [📚 View All Modules](#%EF%B8%8F-course-structure) | [⭐ Star the Repository](https://github.com/PaulMunatsi/Linux101)
+[📥 Download Module 01](/assets/markdown/Module01_LinuxFundamentals.md) | [📚 View All Modules](#%EF%B8%8F-course-structure) | [⭐ Star the Repository](https://github.com/PaulMunatsi/Linux101)
 
 ---
 
