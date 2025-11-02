@@ -1,0 +1,31 @@
+# robots.txt for Zim Safe-Zone Foundation Trust Website
+# This file tells search engines which pages to crawl
+
+User-agent: *
+Allow: /
+
+# Allow all search engines to index the entire site
+Disallow:
+
+# Sitemap location (update when you create one)
+# Sitemap: https://YOUR-USERNAME.github.io/zimsafezone-website/sitemap.xml
+
+# Crawl-delay (optional - prevents aggressive crawling)
+# Crawl-delay: 10
+
+# Popular search engine bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block any malicious bots (optional)
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
