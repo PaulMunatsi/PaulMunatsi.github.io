@@ -18,7 +18,7 @@
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.googleapis.com https://*.gstatic.com; script-src 'self'; frame-src https://www.google.com;">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -47,9 +47,11 @@
             <ul class="nav-menu" id="navMenu">
                 <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#team" class="nav-link">Team</a></li>
                 <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
                 <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
-                <li class="nav-item"><a href="#shop" class="nav-link">Shop</a></li>
+                <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="#shop" class="nav-link">Pawa-Shop</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             
@@ -79,19 +81,19 @@
             <!-- Stats Section -->
             <div class="stats-grid">
                 <div class="stat-card glass-card">
-                    <h3 class="stat-number">1,900+</h3>
+                    <h3 class="stat-number">2,200+</h3>
                     <p class="stat-label">Solar Systems Installed</p>
                 </div>
                 <div class="stat-card glass-card">
                     <h3 class="stat-number">75,000</h3>
-                    <p class="stat-label">Target Households by 2028</p>
+                    <p class="stat-label">Target Systems Installed by 2030</p>
                 </div>
                 <div class="stat-card glass-card">
-                    <h3 class="stat-number">90%+</h3>
-                    <p class="stat-label">Customer Retention Rate</p>
+                    <h3 class="stat-number">14+</h3>
+                    <p class="stat-label">Commercial and Industrial (Systems Above 20kva)</p>
                 </div>
                 <div class="stat-card glass-card">
-                    <h3 class="stat-number">$160K+</h3>
+                    <h3 class="stat-number">$320K+</h3>
                     <p class="stat-label">Revenue Generated</p>
                 </div>
             </div>
@@ -108,11 +110,69 @@
             
             <div class="about-content">
                 <div class="about-text glass-card">
-                    <h3>Who We Are</h3>
-                    <p>Pawafan is a for-profit youth-led social enterprise founded in 2023 that provides smart energy innovations and clean cooking solutions for low-income households and smallholder farmers. Our work focuses on providing sustainable energy solutions, particularly benefiting women and small-scale farmers in rural Zimbabwe.</p>
+                    <div class="about-intro">
+                        <h3>Who We Are</h3>
+                        <h4 class="highlight-subtitle">Pawafan - Building Zimbabwe's Sustainable Energy Future, One Community at a Time</h4>
+                        <p>Pawafan is a dynamic, for-profit social enterprise founded by a new generation of Zimbabwean leaders. We tackle the critical issue of energy poverty head-on by delivering smart, scalable, and sustainable energy innovations to the communities that need them most.</p>
+                    </div>
                     
-                    <h3>The Problem We're Solving</h3>
-                    <p>In Zimbabwe, 70% of the population (approximately 10 million people) lacks access to reliable electricity, with 75% living in rural areas. 90% of rural households rely on firewood and biomass for cooking, resulting in over 4,000 deaths annually from indoor air pollution-related diseases. Energy poverty costs Zimbabwe's economy $1.2 billion annually, hindering economic development and perpetuating poverty.</p>
+                    <div class="problem-section">
+                        <h3>The Problem We're Solving</h3>
+                        <h4 class="highlight-subtitle">The Energy Access Crisis in Zimbabwe</h4>
+                        
+                        <div class="problem-card">
+                            <h5 class="problem-title">🎯 The Core Problem</h5>
+                            <p>Rural Zimbabwe faces a severe energy access gap, with a vast majority of households and small-scale enterprises lacking a connection to the national grid or any reliable, affordable, and modern source of electricity. This energy poverty is a fundamental bottleneck to achieving sustainable development.</p>
+                        </div>
+
+                        <div class="problem-card">
+                            <h5 class="problem-title">⚠️ The Primary Manifestations & Consequences</h5>
+                            
+                            <div class="sdg-item">
+                                <div class="sdg-header">
+                                    <span class="sdg-badge">SDG 3 & 5</span>
+                                    <strong>The Health and Gender Crisis</strong>
+                                </div>
+                                <p>Reliance on solid fuels (firewood) for cooking in poorly ventilated homes causes debilitating indoor air pollution, a leading cause of pneumonia and other respiratory diseases. Women and children, who spend the most time near the hearth, bear the greatest health burden.</p>
+                            </div>
+
+                            <div class="sdg-item">
+                                <div class="sdg-header">
+                                    <span class="sdg-badge">SDG 4</span>
+                                    <strong>The Educational Deficit</strong>
+                                </div>
+                                <p>Lack of lighting prevents children from studying after dark, contributing to high dropout rates and poor educational outcomes. The digital divide widens as phones and radios—critical tools for information—cannot be charged, limiting access to knowledge.</p>
+                            </div>
+
+                            <div class="sdg-item">
+                                <div class="sdg-header">
+                                    <span class="sdg-badge">SDG 8</span>
+                                    <strong>The Economic Paralysis</strong>
+                                </div>
+                                <p>For smallholder farmers and micro-entrepreneurs, the absence of power is a direct barrier to prosperity. This manifests in two critical ways:</p>
+                                <ul class="sdg-list">
+                                    <li><strong>Limited Productive Use of Energy:</strong> Inability to use basic machinery (e.g., sewing machines, barber clippers, water pumps) to create goods or services beyond daylight hours, stifling micro-enterprise.</li>
+                                    <li><strong>Blocked Commercial Use of Energy:</strong> Inability to scale operations with vital agro-processing equipment (e.g., grinders, milk chillers, irrigation systems). This locks farmers into low-profit, rain-fed subsistence agriculture and leads to significant post-harvest losses.</li>
+                                </ul>
+                            </div>
+
+                            <div class="sdg-item">
+                                <div class="sdg-header">
+                                    <span class="sdg-badge">SDG 7</span>
+                                    <strong>Lack of Affordable & Clean Energy</strong>
+                                </div>
+                                <p>The current energy mix for rural communities is defined by a lack of affordability, reliability, and cleanliness, creating a direct contradiction to the targets of SDG 7.</p>
+                            </div>
+
+                            <div class="sdg-item">
+                                <div class="sdg-header">
+                                    <span class="sdg-badge">SDG 13</span>
+                                    <strong>The Unsustainable Pathway</strong>
+                                </div>
+                                <p>Dependence on deforestation for firewood contributes to environmental degradation and undermines climate resilience, trapping communities in a vulnerable state.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Values Cards -->
@@ -143,8 +203,84 @@
             <!-- Target Market -->
             <div class="market-section glass-card">
                 <h3>Our Target Market</h3>
-                <p>Pawafan is targeting 1.5 million households in Zimbabwe, representing approximately 7.5 million people. Our focus is on low-income households with monthly income less than $100, living in rural and peri-urban areas without access to grid electricity.</p>
-                <p>We aim to capture 5% of this market, equivalent to 75,000 households in the next 5 years, with an average revenue per user of $15 to $20 per month.</p>
+                <h4 class="highlight-subtitle">The Underserved Core of Rural Zimbabwe</h4>
+                <p>Our work is precisely targeted to solve the energy crisis for:</p>
+                
+                <ul class="market-list">
+                    <li><strong>Low-Income Households:</strong> Where the lack of electricity disproportionately affects women's health and children's education</li>
+                    <li><strong>Smallholder Farmers and Agribusinesses:</strong> For whom unreliable power is the primary barrier to productivity, profitability, and commercial growth</li>
+                    <li><strong>Commercial and Industrial Users:</strong> Looking for reliable, independent power solutions</li>
+                </ul>
+                
+                <div class="solutions-intro">
+                    <h4 class="solutions-heading">💡 Our Suite of Transformative Solutions</h4>
+                    <p class="solutions-tagline">We bridge this energy gap with a tailored portfolio, enabling a journey from basic access to productive use:</p>
+                    
+                    <div class="solution-highlight">
+                        <h5>☀️ Solar Home Systems</h5>
+                        <p>We provide entry-level systems that power lights, phones, and radios, up to commercial-scale solar solutions for irrigation, milling, and cold storage, empowering farmers to become more resilient and profitable.</p>
+                    </div>
+                    
+                    <div class="solution-highlight">
+                        <h5>🔥 Clean Cooking & Biogas Systems</h5>
+                        <p>We install biogas units that offer a healthier, cleaner alternative to firewood, reducing indoor air pollution and saving families time and money, while also producing organic fertilizer as a valuable by-product.</p>
+                    </div>
+                </div>
+                
+                <p class="closing-statement"><strong>By focusing on these scalable solutions for this critical market, Pawafan doesn't just supply power—we fuel health, education, and economic prosperity, building a brighter, more sustainable future from the ground up.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Meet Our Team</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">Dedicated professionals driving sustainable energy innovation</p>
+            </div>
+            
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-card glass-card" data-member="0">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">PZ</div>
+                    </div>
+                    <h3 class="team-name">Perseverance Ziwende</h3>
+                    <p class="team-role">Managing Director</p>
+                    <button class="btn btn-secondary team-more-btn">View Profile</button>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-card glass-card" data-member="1">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">NG</div>
+                    </div>
+                    <h3 class="team-name">Nancy Gandawa</h3>
+                    <p class="team-role">Finance Director</p>
+                    <button class="btn btn-secondary team-more-btn">View Profile</button>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-card glass-card" data-member="2">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">PC</div>
+                    </div>
+                    <h3 class="team-name">Prosper Chanana</h3>
+                    <p class="team-role">Head Technician</p>
+                    <button class="btn btn-secondary team-more-btn">View Profile</button>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="team-card glass-card" data-member="3">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">PM</div>
+                    </div>
+                    <h3 class="team-name">Paul Munatsi</h3>
+                    <p class="team-role">Chief Technology Officer</p>
+                    <button class="btn btn-secondary team-more-btn">View Profile</button>
+                </div>
             </div>
         </div>
     </section>
@@ -155,46 +291,45 @@
             <div class="section-header">
                 <h2 class="section-title">Our Solutions</h2>
                 <div class="title-underline"></div>
-                <p class="section-subtitle">Comprehensive energy solutions to address Zimbabwe's energy poverty crisis</p>
+                <p class="section-subtitle">Powering Every Step of off-grid Life</p>
+                <p>We provide a ladder of sustainable energy solutions, from basic household needs to powering commercial growth.</p>
             </div>
             
             <div class="services-grid">
                 <!-- Solar Power Systems -->
                 <div class="service-card glass-card">
                     <div class="service-icon">☀️</div>
-                    <h3>Solar Power Systems</h3>
-                    <p>Affordable, modular, and pay-as-you-go plug & play solar energy solutions for households. Our systems include solar panels, batteries, and energy-efficient appliances, capable of generating 6Wh-100kWh of energy per day.</p>
+                    <h3>Solar Home Systems: Light, Connect, and Prosper</h3>
+                    <p>Pawafan brings safe, reliable electricity to any home, unlocking new opportunities for learning, business, and comfort.</p>
                     <ul class="service-features">
-                        <li>✓ 60,000+ installations planned</li>
-                        <li>✓ Modular design for scalability</li>
-                        <li>✓ Pay-as-you-go payment options</li>
-                        <li>✓ 1M+ solar pico lights</li>
+                        <li>Basic & Advanced Home Kits: From lighting and phone charging to powering TVs, radios, and fans.</li>
+                        <li>Productive Use Power: Designed to run appliances like sewing machines, barber clippers, and refrigerators, turning energy into a source of income.</li>
+                        <li>Durable & Affordable: High-quality, pay-as-you-go and flexible financing options to ensure accessibility.</li>
                     </ul>
                 </div>
                 
                 <!-- Clean Cooking Solutions -->
                 <div class="service-card glass-card">
                     <div class="service-icon">🔥</div>
-                    <h3>Clean Cooking Solutions</h3>
-                    <p>Energy-efficient cookstoves and fuel sources powered from biodigesters, reducing indoor air pollution by 90% and greenhouse gas emissions by 70%.</p>
+                    <h3>Commercial & Agri-Solar: Fueling Rural Enterprises</h3>
+                    <p>Pawafan power your business and increase productivity with reliable energy that is independent of the grid.</p>
                     <ul class="service-features">
-                        <li>✓ 50,000+ households targeted</li>
-                        <li>✓ Biodigester fuel sources</li>
-                        <li>✓ 90% reduction in air pollution</li>
-                        <li>✓ 70% reduction in emissions</li>
+                        <li>Solar Water Pumping: Enable all-season irrigation to boost crop yields and diversify farming.</li>
+                        <li>Agri-Processing Power: Run grain mills, dehullers, and grinders to add value to your produce</li>
+                        <li>Cold Storage Solutions: Drastically reduce post-harvest losses with solar-powered refrigerators and cold rooms for milk, fruits, and vegetables.</li>
+                        <li>Custom Commercial Systems: We design and install larger systems to meet the specific power needs of shops, clinics, and small factories.</li>
                     </ul>
                 </div>
                 
                 <!-- Digital Payment Platform -->
                 <div class="service-card glass-card">
-                    <div class="service-icon">📱</div>
-                    <h3>Digital Payment Platform</h3>
-                    <p>A mobile payment system for customers to pay for their energy usage, processing over 1,000 transactions daily, with a payment rate of 95%.</p>
+                    <div class="service-icon">♻️</div>
+                    <h3>Biogas Systems: Clean Cooking, Productive Farming</h3>
+                    <p>Transform animal and plant waste into a powerful source of clean energy and organic fertilizer.</p>
                     <ul class="service-features">
-                        <li>✓ Mobile money integration</li>
-                        <li>✓ 1,000+ daily transactions</li>
-                        <li>✓ 95% payment success rate</li>
-                        <li>✓ Flexible payment plans</li>
+                        <li>Clean & Safe Cooking: Replace smoke-filled kitchens with a healthy, continuous gas supply for faster cooking.</li>
+                        <li>Waste-to-Value: Convert livestock manure into free cooking fuel and nutrient-rich, organic fertilizer.</li>
+                        <li>Reduce Costs: Eliminate the need to buy firewood, charcoal, or chemical fertilizers, saving families money and time.</li>
                     </ul>
                 </div>
             </div>
@@ -482,11 +617,120 @@
         </div>
     </section>
 
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Latest Work</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">Follow our journey as we bring sustainable energy to communities across Zimbabwe</p>
+            </div>
+            
+            <div class="blog-grid">
+                <!-- Blog Post 1 -->
+                <article class="blog-card glass-card" data-post="0">
+                    <div class="blog-image">
+                        <div class="blog-placeholder" style="background: linear-gradient(135deg, #7ed957, #4a7ba7);">
+                            <div class="placeholder-icon">🏠</div>
+                        </div>
+                        <div class="blog-date">Nov 2024</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-category">Installation</div>
+                        <h3 class="blog-title">Solar Installation in Mutoko Rural Community</h3>
+                        <p class="blog-excerpt">Successfully installed 50+ solar home systems in Mutoko district, bringing reliable electricity to rural families for the first time...</p>
+                        <button class="btn btn-secondary blog-read-more">Read More</button>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 2 -->
+                <article class="blog-card glass-card" data-post="1">
+                    <div class="blog-image">
+                        <div class="blog-placeholder" style="background: linear-gradient(135deg, #ffd93d, #7ed957);">
+                            <div class="placeholder-icon">🏫</div>
+                        </div>
+                        <div class="blog-date">Oct 2024</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-category">Community Project</div>
+                        <h3 class="blog-title">Powering Schools in Marondera</h3>
+                        <p class="blog-excerpt">Completed commercial solar installation at three primary schools in Marondera, enabling computer classes and evening study sessions...</p>
+                        <button class="btn btn-secondary blog-read-more">Read More</button>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 3 -->
+                <article class="blog-card glass-card" data-post="2">
+                    <div class="blog-image">
+                        <div class="blog-placeholder" style="background: linear-gradient(135deg, #4a7ba7, #7ed957);">
+                            <div class="placeholder-icon">♻️</div>
+                        </div>
+                        <div class="blog-date">Sep 2024</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-category">Clean Cooking</div>
+                        <h3 class="blog-title">Biodigester Systems for Smallholder Farmers</h3>
+                        <p class="blog-excerpt">Installed 20 biodigester systems for farmers in Goromonzi, converting waste into clean cooking gas and organic fertilizer...</p>
+                        <button class="btn btn-secondary blog-read-more">Read More</button>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 4 -->
+                <article class="blog-card glass-card" data-post="3">
+                    <div class="blog-image">
+                        <div class="blog-placeholder" style="background: linear-gradient(135deg, #7ed957, #b8f59a);">
+                            <div class="placeholder-icon">🏥</div>
+                        </div>
+                        <div class="blog-date">Aug 2024</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-category">Healthcare</div>
+                        <h3 class="blog-title">Solar Power for Rural Health Clinics</h3>
+                        <p class="blog-excerpt">Providing reliable power to 5 rural health clinics in Mashonaland East, ensuring refrigeration for vaccines and 24/7 lighting...</p>
+                        <button class="btn btn-secondary blog-read-more">Read More</button>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 5 -->
+                <article class="blog-card glass-card" data-post="4">
+                    <div class="blog-image">
+                        <div class="blog-placeholder" style="background: linear-gradient(135deg, #ffa07a, #ffd93d);">
+                            <div class="placeholder-icon">👥</div>
+                        </div>
+                        <div class="blog-date">Jul 2024</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-category">Training</div>
+                        <h3 class="blog-title">Community Training Workshop Success</h3>
+                        <p class="blog-excerpt">Conducted hands-on training for 100+ community members on solar system maintenance and clean cooking practices...</p>
+                        <button class="btn btn-secondary blog-read-more">Read More</button>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 6 -->
+                <article class="blog-card glass-card" data-post="5">
+                    <div class="blog-image">
+                        <div class="blog-placeholder" style="background: linear-gradient(135deg, #4a7ba7, #7ed957);">
+                            <div class="placeholder-icon">💡</div>
+                        </div>
+                        <div class="blog-date">Jun 2024</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-category">Milestone</div>
+                        <h3 class="blog-title">Reaching 1,500 Households Milestone</h3>
+                        <p class="blog-excerpt">Celebrating a major achievement as we reach 1,500 households powered by clean, sustainable solar energy...</p>
+                        <button class="btn btn-secondary blog-read-more">Read More</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <!-- Shop Section -->
     <section id="shop" class="shop">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Our Products</h2>
+                <h2 class="section-title">Pawa-Shop</h2>
                 <div class="title-underline"></div>
                 <p class="section-subtitle">Choose from our range of solar power solutions</p>
             </div>
@@ -553,6 +797,7 @@
                 
                 <!-- Clean Cookstove -->
                 <div class="product-card glass-card">
+                    <div class="product-badge">Manager's Special</div>
                     <div class="product-image">
                         <div class="product-icon">🍳</div>
                     </div>
@@ -644,6 +889,23 @@
                     <p><a href="https://www.pawafan.co.zw" target="_blank" rel="noopener noreferrer">www.pawafan.co.zw</a></p>
                 </div>
             </div>
+            
+            <!-- Map Section -->
+            <div class="contact-map glass-card">
+                <h3>Find Us Here</h3>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3797.1504115855846!2d30.990550676241238!3d-17.8784190777179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931a3feca7199f7%3A0x6379864c6042e6ab!2s185%20Willowvale%20Rd%2C%20Harare!5e0!3m2!1sen!2szw!4v1762102832935!5m2!1sen!2szw"
+                        width="100%"
+                        height="450"
+                        style="border:0; border-radius: 12px;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Pawafan Location - 185 Willowvale Road, Harare, Zimbabwe">
+                    </iframe>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -665,7 +927,7 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#services">Services</a></li>
-                        <li><a href="#shop">Shop</a></li>
+                        <li><a href="#shop">Pawa-Shop</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
