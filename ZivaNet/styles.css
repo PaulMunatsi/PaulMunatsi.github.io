@@ -420,7 +420,11 @@ body {
     right: 15%;
     animation: floatCard 9s infinite ease-in-out 3s;
 }
-
+.card-5 {
+    top: 5%;
+    right: 5%;
+    animation: floatCard 9s infinite ease-in-out 3s;
+}
 @keyframes floatCard {
     0%, 100% {
         transform: translateY(0);
