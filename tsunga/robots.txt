@@ -1,0 +1,26 @@
+# robots.txt for Tsunga Bamu Law International
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.tsungalawinc.africa/sitemap.xml
+
+# Crawl delay (optional - helpful for smaller servers)
+Crawl-delay: 1
+
+# Block common bad bots (optional)
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: MJ12bot
+Crawl-delay: 10
+
+# Allow all search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /

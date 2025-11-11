@@ -1,0 +1,13 @@
+# Security Policy for Tsunga Bamu Law International
+# Based on RFC 9116
+
+Contact: mailto:info@tsungalawinc.africa
+Contact: tel:+263777283249
+Preferred-Languages: en
+Canonical: https://www.tsungalawinc.africa/.well-known/security.txt
+Policy: https://www.tsungalawinc.africa/security-policy
+Expires: 2025-12-31T23:59:59.000Z
+Acknowledgments: https://www.tsungalawinc.africa/security-acknowledgments
+
+# If you discover a security vulnerability, please report it to us at info@tsungalawinc.africa
+# We take all security reports seriously and will respond within 48 hours.
