@@ -1,0 +1,2215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paul Munatsi - Digital Security Analyst & IT Strategist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧑🏿‍💻</text></svg>">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #0ea5e9;
+            --bg-dark: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-light: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        [data-theme="light"] {
+            --bg-dark: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text-light: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.3s ease;
+            opacity: 0.5;
+            mix-blend-mode: difference;
+        }
+
+        .cursor.expand {
+            width: 60px;
+            height: 60px;
+            background: rgba(37, 99, 235, 0.1);
+            border-color: var(--secondary);
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--primary);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            bottom: -100px;
+            right: -100px;
+            animation-delay: 5s;
+        }
+
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: #8b5cf6;
+            top: 50%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+
+        nav.scrolled {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="light"] nav.scrolled {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--text-light);
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0.3rem;
+            left: 1rem;
+            right: 1rem;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+            letter-spacing: 1px;
+        } 
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--primary);
+            transition: all 0.6s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .theme-toggle:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+
+        .theme-toggle span {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .theme-toggle.rotating span {
+            animation: rotate360 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes rotate360 {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        /* Command Palette */
+        .command-palette {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 90%;
+            max-width: 600px;
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="light"] .command-palette {
+            background: rgba(248, 250, 252, 0.95);
+        }
+
+        .command-palette.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .command-search {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+        }
+
+        .command-search::placeholder {
+            color: var(--text-muted);
+        }
+
+        .command-results {
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .command-item {
+            padding: 1rem 1.5rem;
+            margin: 0.5rem 0;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .command-item:hover {
+            background: var(--primary);
+            transform: translateX(5px);
+            color: white;
+        }
+
+        .command-item-icon {
+            font-size: 1.5rem;
+        }
+
+        .command-hint {
+            padding: 1rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .command-hint kbd {
+            background: var(--bg-secondary);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Dancing Script', cursive;
+            font-style: italic;
+        }
+
+        .hero-content .tagline {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .hero-content .bio {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.6s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .btn:hover::before {
+            width: 300%;
+            height: 300%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, var(--secondary), #8b5cf6);
+            color: white;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.3);
+        }
+
+        .btn-download .icon {
+            transition: transform 0.4s ease;
+            font-size: 1.2rem;
+        }
+
+        .btn-download:hover .icon {
+            transform: translateY(3px);
+        }
+
+        .btn-download.loading {
+            animation: downloadPulse 1s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes downloadPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Wrapper */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-wrapper {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 24px;
+            padding: 4rem 2rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        [data-theme="light"] .section-wrapper {
+            background: rgba(248, 250, 252, 0.7);
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .expertise-item {
+            background: var(--bg-dark);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .expertise-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+        }
+
+        .profile-card {
+            background: var(--bg-dark);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            font-weight: 700;
+            color: white;
+            margin: 0 auto 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+            position: relative;
+        }
+
+        [data-theme="light"] .project-card {
+            background: rgba(248, 250, 252, 0.7);
+            border: 1px solid rgba(100, 116, 139, 0.2);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(139, 92, 246, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card.hidden {
+            display: none;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.3);
+            border-color: var(--primary);
+        }
+
+        .project-header {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-link:hover {
+            gap: 1rem;
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Articles Section */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .article-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+            position: relative;
+        }
+
+        [data-theme="light"] .article-card {
+            background: rgba(248, 250, 252, 0.7);
+            border: 1px solid rgba(100, 116, 139, 0.2);
+        }
+
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(14, 165, 233, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .article-card:hover::before {
+            opacity: 1;
+        }
+
+        .article-card.hidden {
+            display: none;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+            border-color: var(--secondary);
+        }
+
+        .article-header {
+            height: 200px;
+            background: linear-gradient(135deg, #8b5cf6, var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+        }
+
+        .date-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .article-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-content p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .article-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            color: var(--text-light);
+            max-width: 800px;
+            width: 100%;
+            border-radius: 16px;
+            padding: 3rem;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalSlideIn 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+            color: var(--text-light);
+        }
+
+        .modal-content h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .modal-content h3 {
+            color: var(--text-light);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-content ul {
+            margin-left: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .modal-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-content p {
+            color: var(--text-muted);
+        }
+
+        /* Show More Button */
+        .show-more-btn {
+            display: block;
+            margin: 2rem auto 0;
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .show-more-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .show-more-btn.hidden {
+            display: none;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .success-message {
+            display: none;
+            background: #10b981;
+            color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                justify-content: center;
+                transition: right 0.3s ease;
+                border-left: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid,
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-wrapper {
+                padding: 2rem 1rem;
+            }
+
+            .expertise-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Advanced Background Effects */
+        .background-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float-orb 20s infinite ease-in-out;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(74, 144, 226, 0.4) 0%, transparent 70%);
+            top: -10%;
+            left: -5%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(135, 206, 235, 0.3) 0%, transparent 70%);
+            top: 40%;
+            right: -5%;
+            animation-delay: 5s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(123, 104, 238, 0.25) 0%, transparent 70%);
+            bottom: 10%;
+            left: 30%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float-orb {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(50px, -80px) scale(1.1);
+            }
+            50% {
+                transform: translate(-30px, -50px) scale(0.9);
+            }
+            75% {
+                transform: translate(70px, 40px) scale(1.05);
+            }
+        }
+
+        #particles-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Floating Bubbles */
+        .bubbles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(255, 255, 255, 0.8), 
+                rgba(74, 144, 226, 0.2));
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5),
+                        0 0 20px rgba(74, 144, 226, 0.3);
+            animation: float-up linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float-up {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(1);
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-120vh) scale(1.2);
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            z-index: 9999;
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.1s linear;
+            box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Advanced Background Effects -->
+    <div class="background-effects" aria-hidden="true">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <canvas id="particles-canvas"></canvas>
+    </div>
+    
+    <!-- Floating Bubbles Background -->
+    <div class="bubbles-container" aria-hidden="true"></div>
+    
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Command Palette -->
+    <div class="command-palette" id="commandPalette">
+        <input type="text" class="command-search" id="commandSearch" placeholder="Type to search...">
+        <div class="command-results" id="commandResults">
+            <div class="command-item" data-action="about">
+                <span class="command-item-icon">👤</span>
+                <span>About Me</span>
+            </div>
+            <div class="command-item" data-action="projects">
+                <span class="command-item-icon">🚀</span>
+                <span>Projects</span>
+            </div>
+            <div class="command-item" data-action="articles">
+                <span class="command-item-icon">📄</span>
+                <span>Articles</span>
+            </div>
+            <div class="command-item" data-action="contact">
+                <span class="command-item-icon">📧</span>
+                <span>Contact</span>
+            </div>
+            <div class="command-item" data-action="resume">
+                <span class="command-item-icon">📄</span>
+                <span>Download Resume</span>
+            </div>
+            <div class="command-item" data-action="theme">
+                <span class="command-item-icon">🌓</span>
+                <span>Toggle Theme</span>
+            </div>
+        </div>
+        <div class="command-hint">
+            Press <kbd>Ctrl</kbd> + <kbd>K</kbd> or <kbd>Cmd</kbd> + <kbd>K</kbd> to open • <kbd>Esc</kbd> to close
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="logo">Paul Munatsi</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="theme-toggle" id="themeToggle"><span>🌙</span></button></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Paul Munatsi</h1>
+            <p class="tagline">Technologist | Researcher | Digital Security Strategist</p>
+            <p class="bio">Strategic technologist with 5+ years of experience architecting secure, resilient digital ecosystems across Southern Africa. I partner with human rights defenders, civil society organizations, and grassroots movements to build technology infrastructure that protects privacy, enhances security, and amplifies impact empowering communities operating in high-risk, resource-constrained environments.</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <button class="btn btn-download" id="downloadResume">
+                    <span class="icon">📄</span>
+                    <span>Download Resume</span>
+                </button>
+                <a href="#contact" class="btn btn-outline">Get In Touch</a>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/PaulMunatsi" target="_blank" aria-label="GitHub">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/paul-munatsi-978312153/" target="_blank" aria-label="LinkedIn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/paulmunatsi" target="_blank" aria-label="Twitter">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-wrapper fade-in">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>As a Digital Security Analyst at Digital Society of Africa, I architect and deploy secure digital infrastructure for 70+ mission-driven organizations across Sub-Saharan Africa. My work bridges the gap between cutting edge security practices and the practical realities of civil society designing resilient, privacy respecting systems for human rights defenders, journalists, and grassroots movements navigating hostile digital environments.</p>
+                    
+                    <p>I specialize in holistic security approaches that blend technical rigor with human-centered design. From conducting comprehensive risk assessments and implementing ISO 27001-aligned governance frameworks to deploying encrypted cloud platforms and mentoring frontline digital security teams, I ensure organizations can operate safely without compromising their mission. Over five years, I've completed 40+ ICT audits and delivered transformative training that bridges diverse digital literacy levels and drives lasting adoption of secure practices.</p>
+                    
+                    <p>Technology, in my view, should be a force multiplier for justice, not a barrier. Every solution I design prioritizes accessibility, sustainability, and the unique contextual needs of communities working to create positive change. Whether building mesh networks for offline resilience or crafting incident response protocols for at-risk defenders, I bring both technical precision and a deep commitment to the movements I serve.</p>
+                    
+                    <div class="expertise-grid">
+                        <div class="expertise-item">🔒 Digital Security</div>
+                        <div class="expertise-item">☁️ Cloud Infrastructure</div>
+                        <div class="expertise-item">🛡️ Risk Management</div>
+                        <div class="expertise-item">📋 IT Governance</div>
+                        <div class="expertise-item">🎓 Capacity Building</div>
+                        <div class="expertise-item">🌍 Human Rights Tech</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="profile-card">
+                        <div class="avatar">🧑🏿‍💻</div>
+                        <h3>Paul Munatsi</h3>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Digital Security Analyst</p>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">70+</div>
+                                <div class="stat-label">Organizations</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">5+</div>
+                                <div class="stat-label">Years</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">40+</div>
+                                <div class="stat-label">Audits</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">4</div>
+                                <div class="stat-label">Certifications</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-wrapper fade-in">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card" data-index="1">
+                    <div class="project-header">🥧</div>
+                    <div class="project-content">
+                        <h3>Install Nextcloud on Raspberry Pi</h3>
+                        <p>Complete guide to setting up a self-hosted cloud storage solution on Raspberry Pi, enabling secure file sharing and collaboration for organizations.</p>
+                        <a href="https://github.com/PaulMunatsi/NextCloud-On-Raspberry-Pi-with-remote-acces-" target="_blank" class="project-link">View Guide →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-index="2">
+                    <div class="project-header">🏠</div>
+                    <div class="project-content">
+                        <h3>Setting Up YunoHost</h3>
+                        <p>Step-by-step tutorial for deploying YunoHost, making self-hosting accessible to non-technical users through an intuitive web interface.</p>
+                        <a href="https://github.com/PaulMunatsi" target="_blank" class="project-link">View Guide →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-index="3">
+                    <div class="project-header">🐧</div>
+                    <div class="project-content">
+                        <h3>Linux Fundamentals Course</h3>
+                        <p>Comprehensive training materials covering Linux basics, command line operations, and system administration for beginners and intermediate users.</p>
+                        <a href="https://paulmunatsi.github.io/linux/" target="_blank" class="project-link">View Guide →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card hidden" data-index="4">
+                    <div class="project-header">🔐</div>
+                    <div class="project-content">
+                        <h3>Neomorphic Form</h3>
+                        <p>Modern, accessible form design with neomorphic UI elements, demonstrating best practices for user experience and security.</p>
+                        <a href="https://github.com/PaulMunatsi" target="_blank" class="project-link">View Guide →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card hidden" data-index="5">
+                    <div class="project-header">📊</div>
+                    <div class="project-content">
+                        <h3>Responsive Dashboard</h3>
+                        <p>Full-featured admin dashboard with data visualization, built with responsive design principles for cross-device compatibility.</p>
+                        <a href="https://github.com/PaulMunatsi" target="_blank" class="project-link">View Guide →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card hidden" data-index="6">
+                    <div class="project-header">🛍️</div>
+                    <div class="project-content">
+                        <h3>Product Landing Page</h3>
+                        <p>Conversion-optimized landing page template with modern animations and mobile-first design approach.</p>
+                        <a href="https://github.com/PaulMunatsi" target="_blank" class="project-link">View Guide →</a>
+                    </div>
+                </div>
+            </div>
+            <button class="show-more-btn" id="showMoreProjects">Show More Projects</button>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section id="articles">
+        <div class="section-wrapper fade-in">
+            <h2 class="section-title">Articles & Conferences</h2>
+            <div class="articles-grid">
+                <div class="article-card" data-index="1" data-article="fifa">
+                    <div class="article-header">
+                        🎤
+                        <span class="date-badge">March 2025</span>
+                    </div>
+                    <div class="article-content">
+                        <h3>FIFAfrica25</h3>
+                        <p>Presented on digital security strategies for African civil society at the Forum on Internet Freedom in Africa.</p>
+                        <span class="article-link">Learn More →</span>
+                    </div>
+                </div>
+                
+                <div class="article-card" data-index="2" data-article="summit">
+                    <div class="article-header">
+                        📰
+                        <span class="date-badge">November 2024</span>
+                    </div>
+                    <div class="article-content">
+                        <h3>Southern Africa Media Summit</h3>
+                        <p>Keynote on protecting journalists and media organizations through digital security best practices.</p>
+                        <span class="article-link">Learn More →</span>
+                    </div>
+                </div>
+                
+                <div class="article-card" data-index="3" data-article="securing">
+                    <div class="article-header">
+                        🛡️
+                        <span class="date-badge">September 2024</span>
+                    </div>
+                    <div class="article-content">
+                        <h3>Securing Civil Society Organizations</h3>
+                        <p>Comprehensive guide on implementing organizational security policies and incident response procedures.</p>
+                        <span class="article-link">Learn More →</span>
+                    </div>
+                </div>
+                
+                <div class="article-card hidden" data-index="4" data-article="resilient">
+                    <div class="article-header">
+                        🏗️
+                        <span class="date-badge">June 2024</span>
+                    </div>
+                    <div class="article-content">
+                        <h3>Building Resilient Digital Infrastructure</h3>
+                        <p>Framework for designing and maintaining digital infrastructure that can withstand disruptions and attacks.</p>
+                        <span class="article-link">Learn More →</span>
+                    </div>
+                </div>
+                
+                <div class="article-card hidden" data-index="5" data-article="privacy">
+                    <div class="article-header">
+                        🔐
+                        <span class="date-badge">April 2024</span>
+                    </div>
+                    <div class="article-content">
+                        <h3>Privacy by Design for NGOs</h3>
+                        <p>Implementing privacy-first principles in NGO operations, from data collection to storage and processing.</p>
+                        <span class="article-link">Learn More →</span>
+                    </div>
+                </div>
+                
+                <div class="article-card hidden" data-index="6" data-article="selfhosting">
+                    <div class="article-header">
+                        ☁️
+                        <span class="date-badge">February 2024</span>
+                    </div>
+                    <div class="article-content">
+                        <h3>Self-Hosting Solutions for Activists</h3>
+                        <p>Practical guide to deploying and maintaining self-hosted services for enhanced privacy and control.</p>
+                        <span class="article-link">Learn More →</span>
+                    </div>
+                </div>
+            </div>
+            <button class="show-more-btn" id="showMoreArticles">Show More Articles</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-wrapper fade-in">
+            <h2 class="section-title">Get In Touch</h2>
+            <form class="contact-form" id="contactForm" action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <div style="text-align: center;">
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </div>
+                <div class="success-message" id="successMessage">
+                    Thank you for your message! I'll get back to you soon.
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Paul Munatsi</p>
+        <p>CompTIA Security+ | Cisco CyberOps | ISC² Certified in Cybersecurity</p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="articleModal">
+        <div class="modal-content" id="modalContent">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+
+        if (cursor && cursorFollower) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                setTimeout(() => {
+                    cursorFollower.style.left = e.clientX + 'px';
+                    cursorFollower.style.top = e.clientY + 'px';
+                }, 100);
+            });
+
+            // Expand cursor on hover
+            const hoverElements = document.querySelectorAll('a, button, .article-card, .project-card, .expertise-item, .skill-card, input, textarea');
+            hoverElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+            });
+        }
+
+        // Command Palette
+        const commandPalette = document.getElementById('commandPalette');
+        const commandSearch = document.getElementById('commandSearch');
+        const commandResults = document.getElementById('commandResults');
+
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                commandPalette.classList.add('active');
+                commandSearch.focus();
+            }
+            if (e.key === 'Escape' && commandPalette.classList.contains('active')) {
+                commandPalette.classList.remove('active');
+            }
+        });
+
+        commandPalette.addEventListener('click', (e) => {
+            if (e.target === commandPalette) {
+                commandPalette.classList.remove('active');
+            }
+        });
+
+        commandResults.addEventListener('click', (e) => {
+            const item = e.target.closest('.command-item');
+            if (item) {
+                const action = item.dataset.action;
+                handleCommand(action);
+                commandPalette.classList.remove('active');
+            }
+        });
+
+        function handleCommand(action) {
+            const sections = {
+                'about': '#about',
+                'projects': '#projects',
+                'articles': '#articles',
+                'contact': '#contact'
+            };
+            
+            if (sections[action]) {
+                document.querySelector(sections[action]).scrollIntoView({ behavior: 'smooth' });
+            } else if (action === 'resume') {
+                downloadResume();
+            } else if (action === 'theme') {
+                document.getElementById('themeToggle').click();
+            }
+        }
+
+        // Resume Download with Animation
+        const downloadResumeBtn = document.getElementById('downloadResume');
+        
+        function downloadResume() {
+            if (!downloadResumeBtn) return;
+            
+            downloadResumeBtn.classList.add('loading');
+            
+            // Simulate PDF generation (replace with actual PDF URL)
+            setTimeout(() => {
+                const link = document.createElement('a');
+                link.href = '#'; // Replace with actual PDF URL
+                link.download = 'Paul_Munatsi_Resume.pdf';
+                link.click();
+                
+                downloadResumeBtn.classList.remove('loading');
+                
+                // Show success feedback
+                const originalHTML = downloadResumeBtn.innerHTML;
+                downloadResumeBtn.innerHTML = '<span>✓</span><span>Downloaded!</span>';
+                setTimeout(() => {
+                    downloadResumeBtn.innerHTML = originalHTML;
+                }, 2000);
+            }, 1500);
+        }
+        
+        if (downloadResumeBtn) {
+            downloadResumeBtn.addEventListener('click', downloadResume);
+        }
+
+        // Initialize all effects when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initBubbles();
+            initParticles();
+            initScrollProgress();
+        });
+
+        // Scroll Progress Bar
+        function initScrollProgress() {
+            const progressBar = document.querySelector('.scroll-progress');
+            if (!progressBar) return;
+            
+            window.addEventListener('scroll', () => {
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (window.pageYOffset / windowHeight);
+                progressBar.style.transform = `scaleX(${scrolled})`;
+            });
+        }
+
+        // Floating Bubbles
+        function initBubbles() {
+            const container = document.querySelector('.bubbles-container');
+            if (!container) return;
+            
+            function createBubble() {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                
+                const size = Math.random() * 80 + 20;
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${Math.random() * 100}%`;
+                
+                const duration = Math.random() * 10 + 10;
+                bubble.style.animationDuration = `${duration}s`;
+                
+                container.appendChild(bubble);
+                
+                setTimeout(() => {
+                    bubble.remove();
+                }, duration * 1000);
+            }
+            
+            setInterval(createBubble, 800);
+            
+            for (let i = 0; i < 5; i++) {
+                setTimeout(createBubble, i * 300);
+            }
+        }
+
+        // Advanced Particle System
+        function initParticles() {
+            const canvas = document.getElementById('particles-canvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            
+            class Particle {
+                constructor() {
+                    this.reset();
+                    this.y = Math.random() * canvas.height;
+                }
+                
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2.5 + 0.5;
+                    this.speedX = Math.random() * 0.5 - 0.25;
+                    this.speedY = Math.random() * 0.5 - 0.25;
+                    this.opacity = Math.random() * 0.5 + 0.2;
+                }
+                
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    
+                    if (this.x > canvas.width) this.x = 0;
+                    if (this.x < 0) this.x = canvas.width;
+                    if (this.y > canvas.height) this.y = 0;
+                    if (this.y < 0) this.y = canvas.height;
+                }
+                
+                draw() {
+                    ctx.fillStyle = `rgba(74, 144, 226, ${this.opacity})`;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            
+            function createParticles() {
+                const particleCount = Math.min(80, Math.floor((canvas.width * canvas.height) / 20000));
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+            }
+            
+            createParticles();
+            window.addEventListener('resize', createParticles);
+            
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(particle => {
+                    particle.update();
+                    particle.draw();
+                });
+                
+                // Draw lines between nearby particles
+                particles.forEach((particleA, indexA) => {
+                    particles.slice(indexA + 1).forEach(particleB => {
+                        const dx = particleA.x - particleB.x;
+                        const dy = particleA.y - particleB.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 120) {
+                            ctx.strokeStyle = `rgba(74, 144, 226, ${(1 - distance / 120) * 0.15})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.beginPath();
+                            ctx.moveTo(particleA.x, particleA.y);
+                            ctx.lineTo(particleB.x, particleB.y);
+                            ctx.stroke();
+                        }
+                    });
+                });
+                
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+        }
+
+        // Article Content Data
+        const articleContent = {
+            fifa: {
+                title: "FIFAfrica25 - Digital Security for African Civil Society",
+                content: `
+                    <p>The Freedom of Information Festival Africa 2025 brought together activists, journalists, technologists, and civil society leaders from across the continent to discuss the state of digital rights, information access, and press freedom in Africa.</p>
+                    
+                    <h3>Key Themes</h3>
+                    <p>During my participation, I engaged in discussions around several critical themes:</p>
+                    <ul>
+                        <li><strong>Digital Security for Activists:</strong> Explored the evolving threat landscape facing human rights defenders and the tools needed to protect sensitive communications.</li>
+                        <li><strong>Access to Information:</strong> Discussed barriers to information access across Africa and strategies to promote transparency and accountability.</li>
+                        <li><strong>Secure Technology Infrastructure:</strong> Shared insights on building resilient systems for organizations working in high-risk environments.</li>
+                        <li><strong>Capacity Building:</strong> Highlighted the importance of accessible training programs that empower grassroots movements with digital security skills.</li>
+                    </ul>
+
+                    <h3>Impact and Outcomes</h3>
+                    <p>The festival provided an invaluable platform for networking with peers across the continent, sharing best practices, and developing collaborative strategies for advancing digital rights. Key outcomes included the establishment of regional working groups focused on digital security, development of shared resources for secure communications, and commitments to ongoing capacity building initiatives.</p>
+
+                    <p>This event reinforced the critical importance of community-driven approaches to digital security and the need for continued investment in accessible technology solutions for civil society.</p>
+                `
+            },
+            summit: {
+                title: "Southern Africa Media Summit - Protecting Journalists",
+                content: `
+                    <p>At the Southern Africa Media Summit, I presented on the unique digital security challenges facing journalists and media organizations operating in the region, with a focus on practical, implementable solutions.</p>
+
+                    <h3>Presentation Overview</h3>
+                    <p>My presentation covered three main areas:</p>
+                    <ul>
+                        <li><strong>Threat Landscape Analysis:</strong> Examined surveillance tactics, digital harassment, and cyber threats targeting independent media in Southern Africa.</li>
+                        <li><strong>Secure Communication Protocols:</strong> Demonstrated end-to-end encrypted messaging tools, secure email practices, and strategies for protecting source confidentiality.</li>
+                        <li><strong>Data Protection Strategies:</strong> Outlined approaches to secure data storage, backup procedures, and incident response planning for newsrooms.</li>
+                    </ul>
+
+                    <h3>Best Practices Shared</h3>
+                    <p>During interactive sessions, we developed practical guidelines including:</p>
+                    <ul>
+                        <li>Implementing two-factor authentication across all organizational accounts</li>
+                        <li>Establishing secure workflows for handling sensitive information</li>
+                        <li>Creating incident response protocols for potential security breaches</li>
+                        <li>Building organizational security culture through regular training</li>
+                    </ul>
+
+                    <h3>Follow-up Initiatives</h3>
+                    <p>Following the summit, we established a regional network of media security advisors to provide ongoing support and launched a collaborative resource hub with tools, guides, and templates for newsroom security.</p>
+                `
+            },
+            securing: {
+                title: "Securing Civil Society Organizations",
+                content: `
+                    <p>This article addresses the critical gap between digital security needs and available resources for civil society organizations (CSOs) operating in challenging environments across Sub-Saharan Africa.</p>
+
+                    <h3>The Challenge</h3>
+                    <p>Many CSOs face significant digital security risks while operating with limited budgets, technical capacity, and infrastructure. This article provides a framework for implementing effective security measures that are both practical and sustainable.</p>
+
+                    <h3>Risk Assessment Framework</h3>
+                    <p>The article introduces a simplified risk assessment methodology tailored for non-technical staff:</p>
+                    <ul>
+                        <li><strong>Asset Identification:</strong> Understanding what data and systems need protection</li>
+                        <li><strong>Threat Modeling:</strong> Identifying realistic threats based on organizational context</li>
+                        <li><strong>Vulnerability Assessment:</strong> Recognizing weak points in current security posture</li>
+                        <li><strong>Risk Prioritization:</strong> Focusing resources on the most critical risks</li>
+                    </ul>
+
+                    <h3>Practical Security Measures</h3>
+                    <p>Key recommendations include:</p>
+                    <ul>
+                        <li>Implementing free and open-source security tools appropriate for context</li>
+                        <li>Establishing clear data handling and retention policies</li>
+                        <li>Creating accessible security training programs for all staff levels</li>
+                        <li>Building redundancy into critical systems without significant cost</li>
+                        <li>Developing incident response procedures that can be activated quickly</li>
+                    </ul>
+
+                    <h3>Capacity Building Strategies</h3>
+                    <p>The article emphasizes the importance of sustainable capacity building, including peer-to-peer learning, documentation of organizational security practices, and integration of security considerations into everyday workflows rather than treating them as separate tasks.</p>
+
+                    <p>By focusing on incremental improvements and building security culture over time, resource-constrained organizations can significantly improve their digital resilience without overwhelming budgets or staff capacity.</p>
+                `
+            },
+            resilient: {
+                title: "Building Resilient Digital Infrastructure",
+                content: `
+                    <p>This conference presentation explored strategies for designing and deploying IT systems that can withstand the unique challenges faced by organizations operating in high-risk, politically sensitive, or resource-constrained environments.</p>
+
+                    <h3>Core Principles of Resilient Infrastructure</h3>
+                    <p>The presentation outlined five key principles:</p>
+                    <ul>
+                        <li><strong>Redundancy:</strong> Building backup systems and fallback options at multiple levels</li>
+                        <li><strong>Decentralization:</strong> Avoiding single points of failure through distributed architecture</li>
+                        <li><strong>Adaptability:</strong> Designing systems that can evolve with changing threat landscapes</li>
+                        <li><strong>Sustainability:</strong> Ensuring solutions are maintainable with available resources</li>
+                        <li><strong>Security by Design:</strong> Integrating security considerations from the ground up</li>
+                    </ul>
+
+                    <h3>Technical Implementation</h3>
+                    <p>Key technical strategies covered included:</p>
+                    <ul>
+                        <li>Cloud and local infrastructure hybrid models for maximum flexibility</li>
+                        <li>Automated backup systems with encrypted off-site storage</li>
+                        <li>Implementation of disaster recovery protocols with regular testing</li>
+                        <li>Use of containerization and infrastructure-as-code for rapid deployment</li>
+                        <li>Network segmentation to contain potential security incidents</li>
+                    </ul>
+
+                    <h3>Business Continuity Planning</h3>
+                    <p>The presentation emphasized the importance of comprehensive business continuity planning, including documentation of critical systems, staff training on emergency procedures, communication protocols during incidents, and regular review and updating of recovery plans.</p>
+
+                    <h3>Case Studies</h3>
+                    <p>Several anonymized case studies demonstrated successful implementation of resilient infrastructure across different organizational contexts, highlighting both technical solutions and organizational change management strategies that enabled successful adoption.</p>
+
+                    <p>The presentation concluded with a call to action for organizations to begin resilience planning now, emphasizing that even small steps toward greater resilience can make significant differences when incidents occur.</p>
+                `
+            },
+            privacy: {
+                title: "Privacy by Design for NGOs",
+                content: `
+                    <h3>Overview</h3>
+                    <p>Practical guide to embedding privacy principles into every aspect of NGO operations, from initial data collection through processing and deletion.</p>
+                    
+                    <h3>Implementation Areas</h3>
+                    <ul>
+                        <li>Data minimization strategies</li>
+                        <li>Consent management systems</li>
+                        <li>Privacy impact assessments</li>
+                        <li>Secure data processing workflows</li>
+                        <li>Rights management and access controls</li>
+                        <li>Privacy-preserving analytics</li>
+                    </ul>
+                    
+                    <h3>Tools and Resources</h3>
+                    <p>Developed open-source toolkit including templates, checklists, and training materials specifically adapted for resource-constrained organizations.</p>
+                `
+            },
+            selfhosting: {
+                title: "Self-Hosting Solutions for Activists",
+                content: `
+                    <h3>Overview</h3>
+                    <p>Comprehensive guide to deploying and maintaining self-hosted services, providing activists with greater control over their data and communications.</p>
+                    
+                    <h3>Services Covered</h3>
+                    <ul>
+                        <li>Email servers with encryption</li>
+                        <li>Cloud storage and file sharing</li>
+                        <li>Collaborative document editing</li>
+                        <li>Secure messaging platforms</li>
+                        <li>Video conferencing solutions</li>
+                        <li>Password management systems</li>
+                    </ul>
+                    
+                    <h3>Practical Deployment</h3>
+                    <p>Includes hardware recommendations, step-by-step setup guides, and maintenance schedules suitable for small organizations with limited technical capacity.</p>
+                `
+            }
+        };
+
+        // Theme Toggle with Enhanced Animation
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', currentTheme);
+        themeToggle.innerHTML = `<span>${currentTheme === 'dark' ? '🌙' : '☀️'}</span>`;
+        
+        themeToggle.addEventListener('click', () => {
+            themeToggle.classList.add('rotating');
+            
+            const theme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            
+            setTimeout(() => {
+                html.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                themeToggle.innerHTML = `<span>${theme === 'dark' ? '🌙' : '☀️'}</span>`;
+            }, 300);
+            
+            setTimeout(() => {
+                themeToggle.classList.remove('rotating');
+            }, 600);
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+        
+        // Close mobile menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuToggle.textContent = '☰';
+            });
+        });
+
+        // Smooth Scroll with Offset
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.getElementById('navbar').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Show More Projects
+        const showMoreProjects = document.getElementById('showMoreProjects');
+        const projectCards = document.querySelectorAll('.project-card');
+        let projectsExpanded = false;
+        
+        showMoreProjects.addEventListener('click', () => {
+            projectCards.forEach((card, index) => {
+                if (index >= 3) {
+                    card.classList.remove('hidden');
+                }
+            });
+            showMoreProjects.classList.add('hidden');
+            projectsExpanded = true;
+        });
+
+        // Show More Articles
+        const showMoreArticles = document.getElementById('showMoreArticles');
+        const articleCards = document.querySelectorAll('.article-card');
+        let articlesExpanded = false;
+        
+        showMoreArticles.addEventListener('click', () => {
+            articleCards.forEach((card, index) => {
+                if (index >= 3) {
+                    card.classList.remove('hidden');
+                }
+            });
+            showMoreArticles.classList.add('hidden');
+            articlesExpanded = true;
+        });
+
+        // Auto-reset sections when scrolling away
+        const resetObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    // Reset Projects Section
+                    if (entry.target.id === 'projects' && projectsExpanded) {
+                        projectCards.forEach((card, index) => {
+                            if (index >= 3) {
+                                card.classList.add('hidden');
+                            }
+                        });
+                        showMoreProjects.classList.remove('hidden');
+                        projectsExpanded = false;
+                    }
+                    
+                    // Reset Articles Section
+                    if (entry.target.id === 'articles' && articlesExpanded) {
+                        articleCards.forEach((card, index) => {
+                            if (index >= 3) {
+                                card.classList.add('hidden');
+                            }
+                        });
+                        showMoreArticles.classList.remove('hidden');
+                        articlesExpanded = false;
+                    }
+                }
+            });
+        }, {
+            threshold: 0,
+            rootMargin: '-100px'
+        });
+
+        resetObserver.observe(document.getElementById('projects'));
+        resetObserver.observe(document.getElementById('articles'));
+
+        // Modal Functionality
+        const modal = document.getElementById('articleModal');
+        const modalBody = document.getElementById('modalBody');
+        const modalClose = document.getElementById('modalClose');
+        
+        articleCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const articleKey = card.getAttribute('data-article');
+                const article = articleContent[articleKey];
+                
+                if (article) {
+                    modalBody.innerHTML = `<h2>${article.title}</h2>${article.content}`;
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        // Close modal
+        modalClose.addEventListener('click', closeModal);
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+        
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Form Handling
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Construct email body with name
+            const emailBody = `From: ${name}%0D%0A%0D%0A${message}`;
+            
+            // Your email address - replace with your actual email
+            const yourEmail = 'paulpmunatsi@gmail.com';
+            
+            // Create mailto link
+            const mailtoLink = `mailto:${yourEmail}?subject=${encodeURIComponent(subject)}&body=${emailBody}`;
+            
+            // Open default email client
+            window.location.href = mailtoLink;
+            
+            // Show success message and reset form
+            successMessage.classList.add('show');
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+                contactForm.reset();
+            }, 5000);
+        });
+
+        // Parallax Effect on Hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('#hero .hero-content');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
