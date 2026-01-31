@@ -3,50 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TalivinPower - World Class Electrical and Solar Services in Zimbabwe. Solar installations, electrical work, lighting design, and smart home automation.">
-    <meta name="keywords" content="solar installation, electrical services, Zimbabwe, Harare, smart home, lighting design, power solutions">
-    <meta name="author" content="TalivinPower">
+    <meta name="description" content="Explore our comprehensive electrical and solar services. From solar installations to smart home automation, TalivinPower has you covered.">
     
-    <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="TalivinPower - World Class Electrical & Solar Services">
-    <meta property="og:description" content="Your trusted partner for solar installations, electrical services, and smart home automation in Zimbabwe.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://talivin.co.zw">
+    <title>Our Services | TalivinPower</title>
     
-    <title>TalivinPower | World Class Electrical & Solar Services</title>
-    
-    <!-- Favicon - Replace with your actual favicon -->
     <link rel="icon" type="image/png" href="images/logo/logo-light.jpeg">
-    
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- ========================================
-         HEADER / NAVIGATION
-         ======================================== -->
+    <!-- Header -->
     <header class="header">
         <div class="header-inner">
-            <!-- Logo -->
             <a href="index.html" class="logo">
                 <img src="images/logo/logo-light.jpeg" alt="TalivinPower">
-                <!-- Uncomment below if you want text logo instead of image -->
-                <!-- <span class="logo-text">Talivin<span>Power</span></span> -->
             </a>
             
-            <!-- Mobile Menu Toggle -->
             <button class="menu-toggle" aria-label="Toggle navigation menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             
-            <!-- Navigation -->
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="services.html" class="nav-link active">Services</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="nav-cta">
@@ -56,77 +38,41 @@
         </div>
     </header>
 
-    <!-- ========================================
-         HERO SECTION
-         ======================================== -->
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-shapes">
-            <div class="hero-shape hero-shape-1"></div>
-            <div class="hero-shape hero-shape-2"></div>
-            <div class="hero-shape hero-shape-3"></div>
-        </div>
-        
-        <div class="hero-content container">
-            <div class="hero-grid">
-                <div class="hero-text fade-in-up">
-                    <div class="hero-label">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                        World Class Electrical & Solar Services
-                    </div>
-                    <h1 class="hero-title">
-                        Powering Your Future with <span>Smart Energy Solutions</span>
-                    </h1>
-                    <p class="hero-description">
-                        From solar installations to smart home automation, we deliver reliable, efficient, and affordable power solutions for homes and businesses across Zimbabwe.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="services.html" class="btn btn-primary btn-lg">Our Services</a>
-                        <a href="contact.html" class="btn btn-outline-white btn-lg">Contact Us</a>
-                    </div>
-                    
-                    <!-- Hero Stats -->
-                    <div class="hero-stats">
-                        <div class="hero-stat">
-                            <div class="hero-stat-number" data-counter="500" data-suffix="+">0+</div>
-                            <div class="hero-stat-label">Projects Completed</div>
-                        </div>
-                        <div class="hero-stat">
-                            <div class="hero-stat-number" data-counter="48" data-suffix="hrs">0hrs</div>
-                            <div class="hero-stat-label">Installation Time</div>
-                        </div>
-                        <div class="hero-stat">
-                            <div class="hero-stat-number" data-counter="100" data-suffix="%">0%</div>
-                            <div class="hero-stat-label">Client Satisfaction</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="hero-image fade-in-up" style="transition-delay: 0.2s;">
-                    <img src="images/gallery/services-overview.jpeg" alt="TalivinPower - Solar and Electrical Services">
-                </div>
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-hero-title fade-in-up">Our Services</h1>
+            <div class="page-hero-breadcrumb fade-in-up">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Services</span>
             </div>
         </div>
     </section>
 
-    <!-- ========================================
-         SERVICES SECTION
-         ======================================== -->
-    <section class="section" id="services">
+    <!-- Services Introduction -->
+    <section class="section">
         <div class="container">
-            <div class="section-header fade-in-up">
+            <div class="section-header fade-in-up" style="margin-bottom: var(--space-8);">
                 <span class="section-label">What We Offer</span>
-                <h2 class="section-title">Our Professional Services</h2>
+                <h2 class="section-title">Comprehensive Power Solutions</h2>
                 <p class="section-subtitle">
-                    Comprehensive electrical and solar solutions tailored to meet your specific needs, delivered by certified professionals.
+                    From residential homes to commercial enterprises, we provide end-to-end electrical and solar solutions tailored to your specific needs. Click on any service below to learn more.
                 </p>
             </div>
             
+            <!-- ========================================
+                 SERVICES GRID
+                 
+                 TO ADD A NEW SERVICE:
+                 1. Copy one of the service card blocks below
+                 2. Update the href to link to the new service page
+                 3. Update the icon, title, and description
+                 4. Create a new service page in /services/ folder
+                 ======================================== -->
             <div class="services-grid stagger-children">
-                <!-- ========================================
-                     SERVICE CARD 1 - Solar Installations
-                     To add more services, copy this entire card block
-                     ======================================== -->
+                
+                <!-- SERVICE 1 - Solar Installations -->
                 <a href="services/solar-installations.html" class="service-card-link">
                     <div class="card service-card">
                         <div class="card-body">
@@ -135,18 +81,17 @@
                             </div>
                             <h3 class="card-title">Solar Installations</h3>
                             <p class="card-text">
-                                Complete solar system design and installation including panels, batteries, and inverters. Harness the power of the sun for reliable, clean energy.
+                                Complete solar system designing and installation. Additional solar panels, battery installation, inverter replacement and repair. Harness Zimbabwe's abundant sunshine.
                             </p>
                             <span class="card-arrow">
-                                Learn More
+                                View Details
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                             </span>
                         </div>
                     </div>
                 </a>
-                <!-- END SERVICE CARD 1 -->
                 
-                <!-- SERVICE CARD 2 - Electrical Installations -->
+                <!-- SERVICE 2 - Electrical Installations -->
                 <a href="services/electrical-installations.html" class="service-card-link">
                     <div class="card service-card">
                         <div class="card-body">
@@ -155,18 +100,17 @@
                             </div>
                             <h3 class="card-title">Electrical Installations</h3>
                             <p class="card-text">
-                                Professional electrical wiring, rewiring, and maintenance for residential and commercial properties. Safe, reliable, and up to code.
+                                Professional electrical installation and maintenance. Wiring, rewiring, power distribution for both domestic and commercial properties. Safe and up to code.
                             </p>
                             <span class="card-arrow">
-                                Learn More
+                                View Details
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                             </span>
                         </div>
                     </div>
                 </a>
-                <!-- END SERVICE CARD 2 -->
                 
-                <!-- SERVICE CARD 3 - Lighting Design -->
+                <!-- SERVICE 3 - Lighting Design -->
                 <a href="services/lighting-design.html" class="service-card-link">
                     <div class="card service-card">
                         <div class="card-body">
@@ -175,18 +119,17 @@
                             </div>
                             <h3 class="card-title">Lighting Design</h3>
                             <p class="card-text">
-                                Interior and exterior lighting solutions that transform spaces. LED installations, decorative lighting, and energy-efficient designs.
+                                Interior and exterior lighting solutions. LED strip installations, decorative ceiling lights, and modern designs that make your neighbours jealous...respectfully.
                             </p>
                             <span class="card-arrow">
-                                Learn More
+                                View Details
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                             </span>
                         </div>
                     </div>
                 </a>
-                <!-- END SERVICE CARD 3 -->
                 
-                <!-- SERVICE CARD 4 - Smart Home Automation -->
+                <!-- SERVICE 4 - Smart Home Automation -->
                 <a href="services/smart-home.html" class="service-card-link">
                     <div class="card service-card">
                         <div class="card-body">
@@ -195,18 +138,17 @@
                             </div>
                             <h3 class="card-title">Smart Home Automation</h3>
                             <p class="card-text">
-                                Control your home with smart technology. Automated lighting, security systems, energy monitoring, and remote access solutions.
+                                Control your home remotely. Smart lighting, security systems, energy monitoring, access control, and CCTV. Integrated solutions for modern living.
                             </p>
                             <span class="card-arrow">
-                                Learn More
+                                View Details
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                             </span>
                         </div>
                     </div>
                 </a>
-                <!-- END SERVICE CARD 4 -->
                 
-                <!-- SERVICE CARD 5 - House Tubing -->
+                <!-- SERVICE 5 - House Tubing -->
                 <a href="services/house-tubing.html" class="service-card-link">
                     <div class="card service-card">
                         <div class="card-body">
@@ -215,18 +157,17 @@
                             </div>
                             <h3 class="card-title">House Tubing</h3>
                             <p class="card-text">
-                                Professional conduit and tubing installation for new constructions and renovations. Proper cable management and protection systems.
+                                Professional conduit installation for new constructions and renovations. Proper cable management and protection for lasting electrical systems.
                             </p>
                             <span class="card-arrow">
-                                Learn More
+                                View Details
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                             </span>
                         </div>
                     </div>
                 </a>
-                <!-- END SERVICE CARD 5 -->
                 
-                <!-- SERVICE CARD 6 - Solar Home Systems -->
+                <!-- SERVICE 6 - Solar Home Systems -->
                 <a href="services/solar-home-systems.html" class="service-card-link">
                     <div class="card service-card">
                         <div class="card-body">
@@ -235,146 +176,77 @@
                             </div>
                             <h3 class="card-title">Solar Home Systems</h3>
                             <p class="card-text">
-                                Complete off-grid and hybrid solar solutions for homes. Battery backup systems, inverters, and sustainable energy independence.
+                                Complete off-grid and hybrid solar solutions. Battery backup, inverters, and energy independence for homes experiencing frequent power outages.
                             </p>
                             <span class="card-arrow">
-                                Learn More
+                                View Details
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                             </span>
                         </div>
                     </div>
                 </a>
-                <!-- END SERVICE CARD 6 -->
+                
+                <!-- ========================================
+                     SERVICE CARD TEMPLATE - Copy to add more
+                     ======================================== -->
+                <!--
+                <a href="services/new-service.html" class="service-card-link">
+                    <div class="card service-card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                [Add SVG icon here]
+                            </div>
+                            <h3 class="card-title">Service Name</h3>
+                            <p class="card-text">Service description goes here.</p>
+                            <span class="card-arrow">
+                                View Details
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                -->
+                
             </div>
         </div>
     </section>
 
-    <!-- ========================================
-         HOW IT WORKS SECTION
-         ======================================== -->
+    <!-- Commercial Services Section -->
     <section class="section section-gray">
         <div class="container">
             <div class="section-header fade-in-up">
-                <span class="section-label">Simple Process</span>
-                <h2 class="section-title">Here's How It Works</h2>
+                <span class="section-label">For Businesses</span>
+                <h2 class="section-title">Commercial Solutions</h2>
                 <p class="section-subtitle">
-                    Getting started with TalivinPower is easy. Follow our simple 3-step process.
+                    We serve offices, retail spaces, hotels, schools, hospitals, and industrial facilities with scalable solutions.
                 </p>
             </div>
             
-            <div class="process-grid stagger-children">
-                <!-- Process Step 1 -->
-                <div class="process-step">
-                    <div class="process-step-number">1</div>
-                    <div class="process-step-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                    </div>
-                    <h3>Consultation</h3>
-                    <p>We assess your energy needs and provide a customized solution tailored to your requirements and budget.</p>
+            <div class="grid grid-3 stagger-children">
+                <div class="card" style="padding: var(--space-6);">
+                    <h4 style="font-weight: var(--font-weight-semibold); margin-bottom: var(--space-3);">Office & Building Automation</h4>
+                    <p style="color: var(--color-gray-600);">Complete automation systems for modern workplaces including climate control, lighting, and access management.</p>
                 </div>
-                
-                <!-- Process Step 2 -->
-                <div class="process-step">
-                    <div class="process-step-number">2</div>
-                    <div class="process-step-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-                    </div>
-                    <h3>Installation</h3>
-                    <p>Get your system professionally installed within 48 hours by our certified technicians with minimal disruption.</p>
+                <div class="card" style="padding: var(--space-6);">
+                    <h4 style="font-weight: var(--font-weight-semibold); margin-bottom: var(--space-3);">Access Control & Attendance</h4>
+                    <p style="color: var(--color-gray-600);">Biometric systems, key card access, and attendance tracking for enhanced security and workforce management.</p>
                 </div>
-                
-                <!-- Process Step 3 -->
-                <div class="process-step">
-                    <div class="process-step-number">3</div>
-                    <div class="process-step-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    </div>
-                    <h3>Pay Easy</h3>
-                    <p>Secure your deposit and pay the rest in 4 easy installments while enjoying uninterrupted power supply.</p>
+                <div class="card" style="padding: var(--space-6);">
+                    <h4 style="font-weight: var(--font-weight-semibold); margin-bottom: var(--space-3);">CCTV & Perimeter Security</h4>
+                    <p style="color: var(--color-gray-600);">Comprehensive surveillance solutions with remote monitoring, motion detection, and 24/7 recording.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========================================
-         WHY CHOOSE US SECTION
-         ======================================== -->
-    <section class="section">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-image fade-in-up">
-                    <img src="images/gallery/how-it-works.jpeg" alt="Why Choose TalivinPower">
-                    <div class="about-image-badge">
-                        <div class="badge-number">10+</div>
-                        <div class="badge-text">Years Experience</div>
-                    </div>
-                </div>
-                
-                <div class="about-content fade-in-up" style="transition-delay: 0.2s;">
-                    <span class="section-label">Why Choose Us</span>
-                    <h2 class="section-title">Your Trusted Partner for Power Solutions</h2>
-                    <p class="about-text">
-                        TalivinPower is a Zimbabwe-based technology and energy solutions company delivering world-class electrical and solar services. We specialize in both residential and commercial projects, providing reliable solutions that address power outages, security concerns, and rising energy costs.
-                    </p>
-                    
-                    <div class="about-features">
-                        <div class="about-feature">
-                            <div class="about-feature-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            </div>
-                            <div class="about-feature-text">
-                                <h4>Certified Professionals</h4>
-                                <p>Licensed and experienced technicians</p>
-                            </div>
-                        </div>
-                        
-                        <div class="about-feature">
-                            <div class="about-feature-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            </div>
-                            <div class="about-feature-text">
-                                <h4>Quality Products</h4>
-                                <p>Premium equipment with warranties</p>
-                            </div>
-                        </div>
-                        
-                        <div class="about-feature">
-                            <div class="about-feature-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            </div>
-                            <div class="about-feature-text">
-                                <h4>Flexible Payment</h4>
-                                <p>Pay in installments, enjoy now</p>
-                            </div>
-                        </div>
-                        
-                        <div class="about-feature">
-                            <div class="about-feature-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            </div>
-                            <div class="about-feature-text">
-                                <h4>24/7 Support</h4>
-                                <p>Always here when you need us</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <a href="about.html" class="btn btn-primary">Learn More About Us</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========================================
-         CTA SECTION
-         ======================================== -->
+    <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-bg"></div>
         <div class="container">
             <div class="cta-content fade-in-up">
-                <h2 class="cta-title">Ready to Power Up Your Property?</h2>
+                <h2 class="cta-title">Need a Custom Solution?</h2>
                 <p class="cta-text">
-                    Contact us today for a free consultation and quote. Let's discuss how we can help you achieve energy independence.
+                    Contact us for a free consultation. We'll assess your needs and design a tailored solution that fits your budget.
                 </p>
                 <div class="cta-buttons">
                     <a href="contact.html" class="btn btn-lg" style="background: white; color: var(--color-secondary);">Get Free Quote</a>
@@ -387,22 +259,16 @@
         </div>
     </section>
 
-    <!-- ========================================
-         FOOTER
-         ======================================== -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <!-- Footer Brand -->
                 <div class="footer-brand">
                     <a href="index.html" class="footer-logo">
                         <img src="images/logo/logo-light.jpeg" alt="TalivinPower">
                     </a>
-                    <p>
-                        World class electrical and solar services for residential and commercial properties across Zimbabwe. Powering your future with smart energy solutions.
-                    </p>
+                    <p>World class electrical and solar services for residential and commercial properties across Zimbabwe.</p>
                     <div class="footer-social">
-                        <!-- EDIT: Update these links with your actual social media URLs -->
                         <a href="https://facebook.com/talivinpower" target="_blank" rel="noopener" aria-label="Facebook">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                         </a>
@@ -415,7 +281,6 @@
                     </div>
                 </div>
                 
-                <!-- Footer Links - Quick Links -->
                 <div class="footer-column">
                     <h4>Quick Links</h4>
                     <div class="footer-links">
@@ -426,7 +291,6 @@
                     </div>
                 </div>
                 
-                <!-- Footer Links - Services -->
                 <div class="footer-column">
                     <h4>Services</h4>
                     <div class="footer-links">
@@ -437,7 +301,6 @@
                     </div>
                 </div>
                 
-                <!-- Footer Contact -->
                 <div class="footer-column">
                     <h4>Contact Us</h4>
                     <div class="footer-contact-item">
@@ -468,13 +331,10 @@
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
     <button class="scroll-top" aria-label="Scroll to top">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
 
-    <!-- JavaScript Files -->
     <script src="js/main.js"></script>
-    <script src="js/gallery.js"></script>
 </body>
 </html>
