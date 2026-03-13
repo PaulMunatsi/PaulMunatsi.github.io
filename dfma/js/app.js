@@ -49,7 +49,7 @@ const CONFIG = {
     { id: 'lab16', num: 'L16', title: 'Threat Hunting Lab', file: 'labs/lab16_threat_hunting.md', parentMod: 'mod16' },
   ],
   capstone: { id: 'capstone', title: 'Capstone: Operation Silent Harbour', file: 'labs/capstone_silent_harbour.md' },
-  markdownPath: 'assets/'
+  markdownPath: 'assets/markdown/'
 };
 
 // All pages combined for navigation
