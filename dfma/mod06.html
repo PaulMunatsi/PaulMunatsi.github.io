@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DFMA Zero to Mastery — Reverse Engineering. Hands-on digital forensics and malware analysis training by Paul Munatsi.">
+  <meta name="author" content="Paul Munatsi">
+  <meta name="theme-color" content="#e63946">
+  <meta property="og:title" content="Module 06: Reverse Engineering — DFMA Zero to Mastery">
+  <meta property="og:description" content="Hands-on digital forensics and malware analysis training. From ELF magic bytes to threat hunting.">
+  <meta property="og:type" content="website">
+  <title>Module 06: Reverse Engineering — DFMA: Zero to Mastery</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+</head>
+<body>
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Ctrl+T">
+    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="5"/>
+      <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+      <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    </svg>
+    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  </button>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
+  
+  <nav class="sidebar" id="sidebar" role="navigation" aria-label="Course navigation">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+          </svg>
+        </div>
+        <div class="logo-text-block">
+          <span class="logo-title">DFMA</span>
+          <span class="logo-sub">Zero to Mastery</span>
+        </div>
+      </a>
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Close navigation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-meta">
+        <span class="progress-label">Overall Progress</span>
+        <span class="progress-pct" id="progressPct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <div class="sidebar-inner">
+      <a href="index.html" class="home-link " data-page="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span>Course Home</span>
+      </a>
+
+      <div class="nav-section">
+        <div class="nav-section-label">Modules</div>
+      </div>
+      <ul class="module-list">
+          <li class="module-item ">
+            <a href="mod00.html" class="module-link" data-page="mod00.html">
+              <span class="module-num">00</span>
+              <span class="module-name">Introduction & Setup</span>
+              <button class="module-check" data-check-id="mod00" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod01.html" class="module-link" data-page="mod01.html">
+              <span class="module-num">01</span>
+              <span class="module-name">Foundations</span>
+              <button class="module-check" data-check-id="mod01" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod02.html" class="module-link" data-page="mod02.html">
+              <span class="module-num">02</span>
+              <span class="module-name">Static Analysis</span>
+              <button class="module-check" data-check-id="mod02" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod03.html" class="module-link" data-page="mod03.html">
+              <span class="module-num">03</span>
+              <span class="module-name">Dynamic Analysis</span>
+              <button class="module-check" data-check-id="mod03" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod04.html" class="module-link" data-page="mod04.html">
+              <span class="module-num">04</span>
+              <span class="module-name">Memory Forensics</span>
+              <button class="module-check" data-check-id="mod04" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod05.html" class="module-link" data-page="mod05.html">
+              <span class="module-num">05</span>
+              <span class="module-name">YARA & Sigma</span>
+              <button class="module-check" data-check-id="mod05" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item active">
+            <a href="mod06.html" class="module-link" data-page="mod06.html">
+              <span class="module-num">06</span>
+              <span class="module-name">Reverse Engineering</span>
+              <button class="module-check" data-check-id="mod06" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod07.html" class="module-link" data-page="mod07.html">
+              <span class="module-num">07</span>
+              <span class="module-name">Reporting & IOCs</span>
+              <button class="module-check" data-check-id="mod07" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod08.html" class="module-link" data-page="mod08.html">
+              <span class="module-num">08</span>
+              <span class="module-name">Case Study</span>
+              <button class="module-check" data-check-id="mod08" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod09.html" class="module-link" data-page="mod09.html">
+              <span class="module-num">09</span>
+              <span class="module-name">Document Malware</span>
+              <button class="module-check" data-check-id="mod09" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod10.html" class="module-link" data-page="mod10.html">
+              <span class="module-num">10</span>
+              <span class="module-name">Android Malware</span>
+              <button class="module-check" data-check-id="mod10" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod11.html" class="module-link" data-page="mod11.html">
+              <span class="module-num">11</span>
+              <span class="module-name">Threat Actor Profiling</span>
+              <button class="module-check" data-check-id="mod11" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod12.html" class="module-link" data-page="mod12.html">
+              <span class="module-num">12</span>
+              <span class="module-name">Disk Forensics</span>
+              <button class="module-check" data-check-id="mod12" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod13.html" class="module-link" data-page="mod13.html">
+              <span class="module-num">13</span>
+              <span class="module-name">Anti-Forensics</span>
+              <button class="module-check" data-check-id="mod13" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod14.html" class="module-link" data-page="mod14.html">
+              <span class="module-num">14</span>
+              <span class="module-name">Fileless Malware</span>
+              <button class="module-check" data-check-id="mod14" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod15.html" class="module-link" data-page="mod15.html">
+              <span class="module-num">15</span>
+              <span class="module-name">Network Forensics</span>
+              <button class="module-check" data-check-id="mod15" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod16.html" class="module-link" data-page="mod16.html">
+              <span class="module-num">16</span>
+              <span class="module-name">Threat Hunting</span>
+              <button class="module-check" data-check-id="mod16" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod17.html" class="module-link" data-page="mod17.html">
+              <span class="module-num">17</span>
+              <span class="module-name">Supply Chain</span>
+              <button class="module-check" data-check-id="mod17" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="mod18.html" class="module-link" data-page="mod18.html">
+              <span class="module-num">18</span>
+              <span class="module-name">Analyst OPSEC</span>
+              <button class="module-check" data-check-id="mod18" aria-label="Mark complete"></button>
+            </a>
+          </li></ul>
+
+      <div class="nav-section">
+        <div class="nav-section-label">Labs</div>
+      </div>
+      <ul class="module-list">
+          <li class="module-item ">
+            <a href="lab00.html" class="module-link" data-page="lab00.html">
+              <span class="module-num" style="background:rgba(0,217,255,0.1);color:var(--cyan)">L00</span>
+              <span class="module-name">Setup</span>
+              <button class="module-check" data-check-id="lab00" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="lab01.html" class="module-link" data-page="lab01.html">
+              <span class="module-num" style="background:rgba(0,217,255,0.1);color:var(--cyan)">L01</span>
+              <span class="module-name">File Formats</span>
+              <button class="module-check" data-check-id="lab01" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="lab02.html" class="module-link" data-page="lab02.html">
+              <span class="module-num" style="background:rgba(0,217,255,0.1);color:var(--cyan)">L02</span>
+              <span class="module-name">Static Analysis</span>
+              <button class="module-check" data-check-id="lab02" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="lab03.html" class="module-link" data-page="lab03.html">
+              <span class="module-num" style="background:rgba(0,217,255,0.1);color:var(--cyan)">L03</span>
+              <span class="module-name">Dynamic Analysis</span>
+              <button class="module-check" data-check-id="lab03" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="lab04.html" class="module-link" data-page="lab04.html">
+              <span class="module-num" style="background:rgba(0,217,255,0.1);color:var(--cyan)">L04</span>
+              <span class="module-name">Memory Forensics</span>
+              <button class="module-check" data-check-id="lab04" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="lab05.html" class="module-link" data-page="lab05.html">
+              <span class="module-num" style="background:rgba(0,217,255,0.1);color:var(--cyan)">L05</span>
+              <span class="module-name">YARA</span>
+              <button class="module-check" data-check-id="lab05" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="lab06.html" class="module-link" data-page="lab06.html">
+              <span class="module-num" style="background:rgba(0,217,255,0.1);color:var(--cyan)">L06</span>
+              <span class="module-name">Reverse Eng.</span>
+              <button class="module-check" data-check-id="lab06" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="lab07.html" class="module-link" data-page="lab07.html">
+              <span class="module-num" style="background:rgba(0,217,255,0.1);color:var(--cyan)">L07</span>
+              <span class="module-name">Reporting</span>
+              <button class="module-check" data-check-id="lab07" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="lab08.html" class="module-link" data-page="lab08.html">
+              <span class="module-num" style="background:rgba(0,217,255,0.1);color:var(--cyan)">L08</span>
+              <span class="module-name">Case Study</span>
+              <button class="module-check" data-check-id="lab08" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="lab09.html" class="module-link" data-page="lab09.html">
+              <span class="module-num" style="background:rgba(0,217,255,0.1);color:var(--cyan)">L09</span>
+              <span class="module-name">Document</span>
+              <button class="module-check" data-check-id="lab09" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="lab10.html" class="module-link" data-page="lab10.html">
+              <span class="module-num" style="background:rgba(0,217,255,0.1);color:var(--cyan)">L10</span>
+              <span class="module-name">Mobile</span>
+              <button class="module-check" data-check-id="lab10" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="lab13.html" class="module-link" data-page="lab13.html">
+              <span class="module-num" style="background:rgba(0,217,255,0.1);color:var(--cyan)">L13</span>
+              <span class="module-name">Anti-Forensics</span>
+              <button class="module-check" data-check-id="lab13" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="lab14.html" class="module-link" data-page="lab14.html">
+              <span class="module-num" style="background:rgba(0,217,255,0.1);color:var(--cyan)">L14</span>
+              <span class="module-name">Fileless</span>
+              <button class="module-check" data-check-id="lab14" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="lab15.html" class="module-link" data-page="lab15.html">
+              <span class="module-num" style="background:rgba(0,217,255,0.1);color:var(--cyan)">L15</span>
+              <span class="module-name">Network</span>
+              <button class="module-check" data-check-id="lab15" aria-label="Mark complete"></button>
+            </a>
+          </li>
+          <li class="module-item ">
+            <a href="lab16.html" class="module-link" data-page="lab16.html">
+              <span class="module-num" style="background:rgba(0,217,255,0.1);color:var(--cyan)">L16</span>
+              <span class="module-name">Threat Hunting</span>
+              <button class="module-check" data-check-id="lab16" aria-label="Mark complete"></button>
+            </a>
+          </li></ul>
+
+      <div class="nav-section">
+        <div class="nav-section-label">Capstone</div>
+      </div>
+      <ul class="module-list">
+        <li class="module-item ">
+          <a href="capstone.html" class="module-link" data-page="capstone.html">
+            <span class="module-num" style="background:rgba(155,114,207,0.12);color:var(--purple)">★</span>
+            <span class="module-name">Operation Silent Harbour</span>
+            <button class="module-check" data-check-id="capstone" aria-label="Mark complete"></button>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <main class="main-content" id="mainContent" role="main">
+    <header class="content-header">
+      <div class="terminal-crumb" role="navigation" aria-label="Current location">
+        <span class="crumb-prompt">analyst@dfma:~$</span>
+        <span class="crumb-path">cd modules/mod-06</span>
+        <span class="crumb-cursor" aria-hidden="true"></span>
+      </div>
+      <div class="search-wrap" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="search" class="search-input" id="searchInput"
+          placeholder="Search course content… (Ctrl+K)"
+          aria-label="Search course content">
+        <div class="search-results" id="searchResults" role="region" aria-live="polite"></div>
+      </div>
+    </header>
+
+    <article class="content-body" id="contentBody">
+      <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p>analyst@dfma:~$ loading modules/mod-06…</p>
+      </div>
+    </article>
+
+    
+  <div class="module-actions" id="moduleActions" style="display:none">
+    <button class="btn btn-complete" id="markCompleteBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Mark Complete
+    </button>
+    <div class="nav-btns">
+      <a href="#" class="btn btn-ghost" id="prevBtn" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        Previous
+      </a>
+      <a href="#" class="btn btn-primary" id="nextBtn" style="display:none">
+        Next
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+  </div>
+  </main>
+
+  <div role="status" aria-live="polite" aria-atomic="true" class="sr-only" id="announcer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-yaml.min.js"></script>
+  <script>
+    // Configure marked before app.js loads
+    if (typeof marked !== 'undefined') {
+      marked.setOptions({ breaks: true, gfm: true });
+    }
+  </script>
+  <script src="js/app.js"></script>
+</body>
+</html>
